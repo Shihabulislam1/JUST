@@ -5,7 +5,7 @@ const Rider = () => {
 
 
   return (
-    <div className="px-64 py-48 ">
+    <div className="px-64 py-16 ">
       <RideCard
         location="Talaimari"
         destination="Bazar"
