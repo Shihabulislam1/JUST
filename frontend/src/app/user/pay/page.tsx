@@ -1,8 +1,11 @@
+import PayNow from '@/components/PayNow/PayNow'
 import React from 'react'
 
 const Pay = () => {
   return (
-    <div>Pay</div>
+    <div className='max-w-[1200px] m-auto mt-32'>
+      <PayNow/>
+    </div>
   )
 }
 
