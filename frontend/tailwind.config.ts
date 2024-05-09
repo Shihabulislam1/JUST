@@ -1,14 +1,14 @@
-import type { Config } from "tailwindcss"
-const { fontFamily } = require("tailwindcss/defaultTheme")
+import type { Config } from "tailwindcss";
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -19,10 +19,39 @@ const config = {
       },
     },
     extend: {
-      fontFamily:{
+      fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
+        transparent: "transparent",
+        current: "currentColor",
+        "bgdark":"#231D1D",
+        "blue": {
+          50:  "#eef3ff",
+          100: "#dce6ff",
+          200: "#dce6ff",
+          300: "#6da4ff",
+          400: "#2075ff",
+          500: "#0052ff",
+          600: "#003bdf",
+          700: "#002db4",
+          800: "#002895",
+          900: "#00217a",
+          950: "#000411",
+        },
+        "cream":{
+          50: '#fdf9ed',
+          100: '#f9efcc',
+          200: '#f4dd93',
+          300: '#efcb68',
+          400: '#e9b136',
+          500: '#e2931e',
+          600: '#c87017',
+          700: '#a65017',
+          800: '#873f19',
+          900: '#6f3418',
+          950: '#401a08',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -79,6 +108,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
