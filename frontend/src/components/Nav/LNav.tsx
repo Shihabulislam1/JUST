@@ -15,10 +15,10 @@ const LNav = ({
   return (
     <nav className="w-full py-4 flex justify-center items-center bg-cream-400">
       <ul className="flex gap-24 justify-center items-center">
-        <Link href={link1} className="text-blue-950 font-bold text-2xl " >
+        <Link href={link1} className="text-blue-950 font-bold text-2xl ">
           <li>{text1}</li>
         </Link>
-        <Link href={link2} className="text-blue-950 font-bold text-2xl" >
+        <Link href={link2} className="text-blue-950 font-bold text-2xl">
           <li>{text2}</li>
         </Link>
       </ul>
