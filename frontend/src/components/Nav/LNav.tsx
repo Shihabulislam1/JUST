@@ -13,8 +13,8 @@ const LNav = ({
   link2: string;
 }) => {
   return (
-    <nav className="w-full mb-10 py-4 flex justify-center items-center bg-cream-400">
-      <ul className="flex gap-12 justify-center items-center">
+    <nav className="w-full py-4 flex justify-center items-center bg-cream-400">
+      <ul className="flex gap-24 justify-center items-center">
         <Link href={link1} className="text-blue-950 font-bold text-2xl " >
           <li>{text1}</li>
         </Link>

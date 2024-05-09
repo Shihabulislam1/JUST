@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Book Now Form</div>
+    <div>Accepted Ride</div>
   )
 }
 

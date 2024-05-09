@@ -8,9 +8,11 @@ const UNav = ({
   account: string;
 }) => {
   return (
-    <nav>
-      <p>{role}</p>
-      <p>{account}</p>
+    <nav className="w-full h-28 flex justify-between bg-blue-950 px-4 items-center">
+      <p className="h-20 px-4 py-3 rounded-md font-bold text-cream-400 text-3xl ml-12">
+        {role}
+      </p>
+      <p className="bg-blue-100 px-4 py-8 text-blue-900 rounded-xl font-semibold">{account}</p>
     </nav>
   );
 };

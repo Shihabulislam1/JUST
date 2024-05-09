@@ -33,7 +33,7 @@ export default function Home() {
           <UserRider
             role="Rider"
             style="text-blue-950 bg-cream-400"
-            link="/user"
+            link="/rider"
           />
         </div>
       </section>
