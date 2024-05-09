@@ -1,0 +1,18 @@
+{"addUser(string,string,string,string,uint256,string,string,string,string)" => FunctionFragment}
+
+{"contractBalance()" => FunctionFragment}
+
+{"deleteUser(address)" => FunctionFragment}
+
+{"getAllUsers()" => FunctionFragment}
+
+{"owner()" => FunctionFragment}
+
+{"rideCard()" => FunctionFragment}
+
+{"rideFare()" => FunctionFragment}
+
+{"sendEthRider(address)" => FunctionFragment}
+
+{"userAddresses(uint256)" => FunctionFragment}
+{"users(address)" => FunctionFragment}

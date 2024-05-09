@@ -1,3 +1,4 @@
+'use client';
 import BookForm from '@/components/BookForm/BookForm'
 import React from 'react'
 
