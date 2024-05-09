@@ -18,6 +18,6 @@
     @apply font-medium text-xl text-blue-950;
   }
   .button{
-    @apply px-8 py-4 bg-cream-400 rounded-xl flex justify-center items-center text-lg text-blue-950 font-bold  ;
+    @apply px-8 py-4 bg-cream-400 rounded-xl flex justify-center items-center text-sm text-blue-950 font-bold  ;
   }
 }

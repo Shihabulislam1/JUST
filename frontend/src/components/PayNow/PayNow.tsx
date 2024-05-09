@@ -10,7 +10,7 @@ const PayNow = ({
   riderAccount: string;
 }) => {
   return (
-    <Card className="border-none bg-cream-100 rounded-xl px-32 py-12">
+    <Card className="border-none bg-cream-100 rounded-xl px-24 py-12">
       <CardHeader className="text-center text-3xl font-semibold text-blue-950">
         Pay For Your Ride
       </CardHeader>

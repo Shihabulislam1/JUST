@@ -2,8 +2,8 @@ import React from "react";
 
 const BookForm = () => {
   return (
-    <form className="rounded-3xl py-6 px-16 bg-cream-100 flex flex-col items-center gap-8">
-      <div className="flex flex-col gap-8">
+    <form className="rounded-3xl py-12 px-16 bg-cream-100 flex flex-col items-center gap-6">
+      <div className="flex flex-col gap-4">
         <div className="form-group">
           <label className="label" htmlFor="name">
             Name
