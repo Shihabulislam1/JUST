@@ -1,6 +1,7 @@
 import { useUserAddress } from "@/contexts/user.context";
 import { useState } from "react";
 import React from "react";
+import { takaToWei } from "@/constants/constants";
 
 const BookForm = () => {
   const { contract1, userAddress } = useUserAddress();
@@ -94,7 +95,7 @@ const BookForm = () => {
             className="inField"
             id="fare"
             onChange={(e) => {
-              setFare(Number(e.target.value));
+              setFare(takaToWei(Number(e.target.value)));
             }}
             name="fare"
           />

@@ -25,6 +25,7 @@ export const RiderAddressProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [riderAddress, setRiderAddress] = useState<string>("");
+  const [cutomerAddress, setCustomerAddress] = useState<string>("");
   const [provider2, setProvider2] = useState<any>();
   const [contract2, setContract2] = useState<any>();
   //array type state inside objects
@@ -51,28 +52,24 @@ export const RiderAddressProvider: React.FC<{ children: React.ReactNode }> = ({
 
         setContract2(contract);
         setProvider2(provider);
-
-        
       }
     };
 
-    const tx0:any = async()=>await contract2.users();
-    const tx01=tx0();
-        console.log(tx01);
-        // const tx2: any[] = [];
-        // tx0.map((item: any) => {
-        //   tx2.push(item);
-        // });
-        // setBookingRequests(tx2);
-        // console.log(bookingRequests);
-
     provider && web32();
   }, []);
+
+  useEffect(() => {
+    if (bookingRequests.length > 0) {
+      console.log("bookingRequests", bookingRequests);
+      // other code that depends on bookingRequests
+    }
+  }, [bookingRequests]);
 
   return (
     <RiderAddressContext.Provider
       value={{
         riderAddress,
+
         setRiderAddress,
         provider2,
         contract2,

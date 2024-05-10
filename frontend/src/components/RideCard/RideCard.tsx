@@ -1,28 +1,74 @@
+"use client";
+
 import React from "react";
 import Text from "../Text/Text";
+import { useRiderAddress } from "@/contexts/rider.context";
+import { weiToTaka } from "@/constants/constants";
 
-const RideCard = ({
-  location = "Talaimari",
-  destination = "Bazar",
-  fare = "100",
-  date = "2021-09-01",
-}: {
-  location: string;
-  destination: string;
-  fare: string;
-  date: string;
-}) => {
+const RideCard = ({ contract, request }: { contract: any; request: any }) => {
+  const { riderAddress, contract2 } = useRiderAddress();
+  const [accepting, setAccepting] = React.useState(false);
+  const {
+    metamaskID,
+    name,
+    email,
+    location,
+    destination,
+    fare,
+    date,
+    time,
+    number,
+  } = request;
+
+  const handleAccept = async () => {
+    try {
+      setAccepting(true);
+      await contract2.Booking(
+        metamaskID,
+        name,
+        email,
+        number,
+        fare,
+        location,
+        destination,
+        riderAddress,
+        false,
+        false
+      );
+      await contract2.deleteUser(metamaskID);
+      setAccepting(false);
+      //reload page
+      setTimeout(() => {
+        (window as any).location.reload();
+      }, 2000);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setAccepting(false);
+    }
+  };
+
   return (
-    <div className="bg-cream-100 px-16 py-24 flex flex-col rounded-xl gap-16">
-      <div className="grid grid-cols-2 gap-x-32 gap-y-16">
+    <div className="bg-cream-100 px-8 py-12 flex flex-col rounded-xl gap-16">
+      <h2 className="text-blue-950 font-semibold text-center text-[32px]">
+        Booking Requests
+      </h2>
+      <div className="grid grid-cols-2 gap-x-16 gap-y-8">
+        <Text text="Metamask Id" value={metamaskID} />
+        <div></div>
+        <Text text="Name" value={name} />
+        <Text text="Email" value={email} />
+
         <Text text="Location" value={location} />
         <Text text="Destination" value={destination} />
-        <Text text="Fare" value={fare} />
-        <Text text="Date" value={date} />
+        <Text text="Fare" value={String(weiToTaka(fare))} />
+        <Text text="Date" value={`${date} ${time}`} />
+        <Text text="Phone" value={number} />
       </div>
       <div className="flex justify-center items-center gap-12">
-        <button className="button">Accept</button>
-        <button className="bg-red-800 text-cream-100 button">Cancel</button>
+        <button className="button" onClick={handleAccept}>
+          {accepting ? "Accepting..." : "Accept"}
+        </button>
       </div>
     </div>
   );

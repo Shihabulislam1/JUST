@@ -18,7 +18,7 @@ const User = ({
           text1="Book A Ride"
           text2="Pay For A Ride"
           link1="/user"
-          link2="user/pay"
+          link2="/user/pay"
         />
         {children}
       </section>

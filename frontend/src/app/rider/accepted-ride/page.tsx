@@ -1,15 +1,35 @@
+'use client'
+
 import React from "react";
 import GetPay from "@/components/GetPay/GetPay";
+import { useState, useEffect } from "react";
+import { useRiderAddress } from "@/contexts/rider.context";
 
-const page = () => {
+const AccepetedRide = () => {
+  const { contract2, riderAddress } = useRiderAddress();
+  const [booking, setBooking] = useState(null);
+
+  useEffect(() => {
+    if (contract2) {
+      const fetchUsers = async () => {
+        const users = await contract2.getBookingByRider(riderAddress);
+        console.log("users",users);
+        setBooking(users);
+      };
+
+      fetchUsers();
+    }
+  }, [contract2,riderAddress]);
+
   return (
     <div>
-      <GetPay 
-        fare={450} 
-        userAccount="0x21Fd62F8b34D174f536c8239543Bf895f3ACAbb9"
-      />
+      <GetPay
+      booking={booking}
+      setBooking={setBooking}
+      /> 
+      
     </div>
   );
 };
 
-export default page;
+export default AccepetedRide;
