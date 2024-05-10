@@ -8,7 +8,7 @@ const BookForm = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [fare, setFare] = useState<number>();
+  const [fare, setFare] = useState<bigint>();
   const [location, setLocation] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);

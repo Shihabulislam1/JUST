@@ -2,15 +2,15 @@ export const constants = {
   smartContractAddress: "0xfe32c229e09c7822dAdA3a71B2ccd914224aFD70",
 };
 
-export const takaToWei = (amountInTaka: number) => {
+export const takaToWei = (amountInTaka: number): bigint => {
   // Step 1: Convert Taka to US Dollars
-  const amountInUSD = amountInTaka / 117;
+  const amountInUSD = BigInt(amountInTaka) * BigInt(117);
 
   // Step 2: Convert US Dollars to Ether
-  const amountInEther = amountInUSD / 2895.5;
+  const amountInEther = amountInUSD / BigInt(28955);
 
   // Step 3: Convert Ether to Wei
-  const amountInWei = amountInEther * 1e18;
+  const amountInWei = amountInEther * BigInt(1e18);
 
   return amountInWei;
 };
@@ -27,4 +27,3 @@ export const weiToTaka = (amountInWei: bigint): number => {
 
   return amountInTaka;
 };
-
