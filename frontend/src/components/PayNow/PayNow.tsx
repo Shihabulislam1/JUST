@@ -21,7 +21,7 @@ const PayNow = ({
     try {
       setPaying(true);
       await contract1.rideFare();
-      await contract1.sendEthRider(booking2.RidermetaID);
+      await contract1.sendEthRider(booking2.RidermetaID,{value: booking2.fare});
       setPaying(false);
       await setBooking2(null);
       await alert("Payment Successful");
@@ -59,9 +59,9 @@ const PayNow = ({
         <Text text="Fare" value={String(weiToTaka(booking2?.fare))} />
         <Text text="Rider Account" value={booking2.RidermetaID} />
       </CardContent>
-      <CardFooter className="flex justify-center items-center mt-12">
+      <CardFooter className="flex justify-center items-center mt-12 gap-8">
         <button className="button " onClick={handlePayment}>{paying ? "Paying..." : "Pay Now"}</button>
-        <button className="bg-red-600 text-cream-200 button" onClick={handleCancel}>
+        <button className="bg-red-600 text-cream-100 button" onClick={handleCancel}>
           {cancelling ? "Cancelling..." : "Cancel Ride"}
         </button>
       </CardFooter>
