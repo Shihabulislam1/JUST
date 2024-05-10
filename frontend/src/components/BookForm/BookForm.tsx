@@ -130,7 +130,7 @@ const BookForm = () => {
       </div>
 
       <button type="submit" className="button">
-        Book Now
+        {loading ? "Loading..." : "Book"}
       </button>
     </form>
   );
