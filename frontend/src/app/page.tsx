@@ -17,10 +17,10 @@ export default function Home() {
         <div className="w-full py-6 rounded-xl text-center  bg-orange-50  shadow-xl justify-center items-center">
           <p>
             <span className="text-gray-950 text-3xl font-bold font-['Inter']">
-              Crypto
+              Ride
             </span>
             <span className="text-amber-400 text-3xl font-bold font-['Inter']">
-              Rider
+              Phalt
             </span>
           </p>
         </div>
