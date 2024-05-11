@@ -26,21 +26,26 @@ const Rider = () => {
   }, [bookingRequests]);
 
   return (
-    <div className="px-64 py-16 flex flex-col gap-12">
-      {bookingRequests.length === 0 ? (
-        <p>Loading</p>
-      ) : (
-        bookingRequests.map(
-          (request) =>
-            request.name !== "" && (
-              <RideCard
-                key={`${request.time}+${Math.random()}`}
-                request={request}
-                contract={contract2}
-              />
-            )
-        )
-      )}
+    <div>
+      <h2 className="text-blue-950 font-semibold text-center text-[32px]">
+        Booking Requests
+      </h2>
+      <div className="px-12 py-4 grid grid-cols-2 gap-x-2 gap-y-2 ">
+        {bookingRequests.length === 0 ? (
+          <p>Loading</p>
+        ) : (
+          bookingRequests.map(
+            (request) =>
+              request.name !== "" && (
+                <RideCard
+                  key={`${request.time}+${Math.random()}`}
+                  request={request}
+                  contract={contract2}
+                />
+              )
+          )
+        )}
+      </div>
     </div>
   );
 };

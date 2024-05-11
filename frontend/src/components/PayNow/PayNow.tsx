@@ -57,7 +57,7 @@ const PayNow = ({
       </CardHeader>
       <CardContent className="text-lg flex flex-col gap-8 mt-12">
         <Text text="Fare" value={String(weiToTaka(booking2?.fare))} />
-        <Text text="Rider Account" value={booking2.RidermetaID} />
+        <Text text="Driver Account" value={booking2.RidermetaID} />
       </CardContent>
       <CardFooter className="flex justify-center items-center mt-12 gap-8">
         <button className="button " onClick={handlePayment}>{paying ? "Paying..." : "Pay Now"}</button>

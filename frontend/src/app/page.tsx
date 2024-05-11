@@ -26,12 +26,12 @@ export default function Home() {
         </div>
         <div className="flex gap-12 ">
           <UserRider
-            role="User"
+            role="Rider"
             style="bg-blue-950 text-cream-400"
             link="/user"
           />
           <UserRider
-            role="Rider"
+            role="Driver"
             style="text-blue-950 bg-cream-400"
             link="/rider"
           />

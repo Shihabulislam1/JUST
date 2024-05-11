@@ -42,24 +42,32 @@ const GetPay = ({ booking, setBooking }: { booking: any; setBooking: any }) => {
   return booking === null ? (
     <p>Nothing to show</p>
   ) : (
-    <Card className="border-none bg-cream-100 rounded-xl px-24 py-12">
-      <CardHeader className="text-center text-3xl font-semibold text-blue-950">
+    <Card className="border-none bg-cream-100 rounded-xl px-4 py-6">
+      <CardHeader className="text-center text-xl font-semibold text-blue-950">
         Accepted Ride
       </CardHeader>
-      <CardContent className="text-lg flex flex-col gap-8 mt-12">
+      <CardContent className="text-lg grid grid-cols-2 gap-y-3 gap-x-4 mt-4">
+      <Text text="Rider Account" value={booking?.metamaskID} />
+      <div></div>
         <Text text="Fare" value={String(weiToTaka(booking?.fare))} />
-        <Text text="User Account" value={booking?.metamaskID} />
+        
+        <Text text="Name" value={booking?.name} />
+        <Text text="Email" value={booking?.email} />
+        <Text text="Location" value={booking?.location} />
+        <Text text="Destination" value={booking?.destination} />
+        <Text text="Number" value={booking?.number} />
+
       </CardContent>
-      <CardFooter className="flex justify-center items-center mt-12 gap-8">
+      <CardFooter className="flex justify-center items-center mt-4 gap-8">
         <button className="button " onClick={handlePaymentRequest}>
           {requesting === true ? "Requesting..." : "Request Payment"}
         </button>
-        <button
+        {/* <button
           className=" bg-red-600 text-cream-100 button"
           onClick={handleCancel}
         >
           {cancelling === true ? "Cancelling..." : "Cancel Ride"}
-        </button>
+        </button> */}
       </CardFooter>
     </Card>
   );

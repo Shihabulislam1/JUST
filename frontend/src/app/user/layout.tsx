@@ -13,7 +13,7 @@ const User = ({
   return (
     <UserAddressProvider>
       <section className="bg-gray-950 h-screen">
-        <UNav role="User" />
+        <UNav role="Rider" />
         <LNav
           text1="Book A Ride"
           text2="Pay For A Ride"

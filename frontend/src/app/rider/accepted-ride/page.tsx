@@ -22,7 +22,7 @@ const AccepetedRide = () => {
   }, [contract2,riderAddress]);
 
   return (
-    <div>
+    <div className="w-[720px] mx-auto py-16">
       <GetPay
       booking={booking}
       setBooking={setBooking}

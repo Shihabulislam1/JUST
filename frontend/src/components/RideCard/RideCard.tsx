@@ -49,11 +49,9 @@ const RideCard = ({ contract, request }: { contract: any; request: any }) => {
   };
 
   return (
-    <div className="bg-cream-100 px-8 py-12 flex flex-col rounded-xl gap-16">
-      <h2 className="text-blue-950 font-semibold text-center text-[32px]">
-        Booking Requests
-      </h2>
-      <div className="grid grid-cols-2 gap-x-16 gap-y-8">
+    <div className="bg-cream-100 px-6 py-4 flex flex-col rounded-xl gap-2 ">
+      
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2 px-4 ">
         <Text text="Metamask Id" value={metamaskID} />
         <div></div>
         <Text text="Name" value={name} />

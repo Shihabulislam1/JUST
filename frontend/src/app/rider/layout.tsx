@@ -2,7 +2,7 @@
 
 import LNav from "@/components/Nav/LNav";
 import UNavR from "@/components/Nav/UNavR";
-import React, { Children } from "react";
+import React from "react";
 import { RiderAddressProvider } from "@/contexts/rider.context";
 
 const Rider = ({
@@ -14,7 +14,7 @@ const Rider = ({
     <RiderAddressProvider>
       <section>
         <UNavR
-          role="Rider"
+          role="Driver"
         />
         <LNav
           text1="Availabe Rides"
