@@ -61,6 +61,7 @@ const PayNow = ({
       </CardContent>
       <CardFooter className="flex justify-center items-center mt-12 gap-8">
         <button className="button " onClick={handlePayment}>{paying ? "Paying..." : "Pay Now"}</button>
+        
         <button className="bg-red-600 text-cream-100 button" onClick={handleCancel}>
           {cancelling ? "Cancelling..." : "Cancel Ride"}
         </button>

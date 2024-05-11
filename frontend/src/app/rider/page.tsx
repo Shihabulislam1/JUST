@@ -30,15 +30,16 @@ const Rider = () => {
       {bookingRequests.length === 0 ? (
         <p>Loading</p>
       ) : (
-        bookingRequests.map((request) => {
-          return (
-            <RideCard
-              key={`${request.time}+${Math.random()}`}
-              request={request}
-              contract={contract2}
-            />
-          );
-        })
+        bookingRequests.map(
+          (request) =>
+            request.name !== "" && (
+              <RideCard
+                key={`${request.time}+${Math.random()}`}
+                request={request}
+                contract={contract2}
+              />
+            )
+        )
       )}
     </div>
   );
