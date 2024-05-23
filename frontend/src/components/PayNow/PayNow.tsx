@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useUserAddress } from "@/contexts/user.context";
 import { weiToTaka } from "@/constants/constants";
 
+
 const PayNow = ({
   booking2,
   setBooking2,
@@ -13,15 +14,18 @@ const PayNow = ({
   booking2: any;
   setBooking2: any;
 }) => {
-  const { contract1 } = useUserAddress();
+  const { contract1,provider1 } = useUserAddress();
   const [paying, setPaying] = useState(false);
   const [cancelling, setCancelling] = useState(false);
 
   const handlePayment = async () => {
     try {
       setPaying(true);
+      await provider1.send("eth_requestAccounts", []);
       await contract1.rideFare();
-      await contract1.sendEthRider(booking2.RidermetaID,{value: booking2.fare});
+      const tx=await contract1.sendEthRider(booking2.RidermetaID,{value: booking2.fare});
+      const TxResponse = await provider1.sendTransaction(tx);
+      await TxResponse.wait();
       setPaying(false);
       await setBooking2(null);
       await alert("Payment Successful");
