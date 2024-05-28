@@ -8,6 +8,9 @@ import {
   Pin,
   InfoWindow,
 } from "@vis.gl/react-google-maps";
+import { MarkerClusterer } from "@googlemaps/markerclusterer";
+import { Marker } from "@googlemaps/markerclusterer";
+
 import { constants } from "@/constants/constants";
 import React from "react";
 

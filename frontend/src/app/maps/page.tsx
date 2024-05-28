@@ -18,7 +18,7 @@ const Page = () => {
   return (
     <APIProvider apiKey={constants.GoogleMapsApiKey}>
       <div className="h-[650px] w-[750px]">
-        <Map  mapId={constants.MapID}>
+        <Map zoom={5}  mapId={constants.MapID}>
             <AdvancedMarker position={position} onClick={()=>setOpen(true)} >
                 <Pin/>
             </AdvancedMarker>
