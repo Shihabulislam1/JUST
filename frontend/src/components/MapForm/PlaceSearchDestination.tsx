@@ -8,7 +8,7 @@ import useOnclickOutside from "react-cool-onclickoutside";
 import { useUserAddress } from "@/contexts/user.context";
 
 export default function PlacesSearchDestination() {
-  const { setDestination } = useUserAddress();
+  const { setDestination, destiantionRef } = useUserAddress();
   const {
     ready,
     value,
@@ -79,8 +79,9 @@ export default function PlacesSearchDestination() {
         onChange={handleInput}
         disabled={!ready}
         placeholder=" Destination"
-        className="bg-cream-200 text-cream-700 text-center placeholder:text-cream-700 
-        py-2  rounded-xl "
+        className="bg-cream-200 text-cream-700 text-center placeholder:text-cream-700
+        py-2  rounded h-12 "
+        ref={destiantionRef}
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === "OK" && (

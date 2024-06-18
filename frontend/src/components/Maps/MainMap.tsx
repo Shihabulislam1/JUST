@@ -1,7 +1,14 @@
 "use client";
 
-import React, { useEffect,useState ,useRef} from "react";
-import { GoogleMap, useJsApiLoader,MarkerF, InfoWindowF,DirectionsRenderer,DirectionsService } from "@react-google-maps/api";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  MarkerF,
+  InfoWindowF,
+  DirectionsRenderer,
+  DirectionsService,
+} from "@react-google-maps/api";
 import { constants } from "@/constants/constants";
 import { useUserAddress } from "@/contexts/user.context";
 import Loader from "../Loader/Loader";
@@ -37,16 +44,17 @@ const destinationIcon = {
 };
 
 export default function MainMap() {
-  const { location, setLocation, destination, setDestination } =
-    useUserAddress();
-
-  const [directionsResponse, setDirectionsResponse] = useState(null);
-  const [distance, setDistance] = useState(null);
-  const [duration, setDuration] = useState(null);
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const originRef = useRef()
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const destiantionRef = useRef()
+  const {
+    location,
+    setLocation,
+    destination,
+    setDestination,
+    duration,
+    setDuration,
+    setDistance,
+    distance,
+    directionsResponse,
+  } = useUserAddress();
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: constants.GoogleMapsApiKey,
@@ -125,6 +133,10 @@ export default function MainMap() {
             </InfoWindowF>
           )}
         </MarkerF>
+      )}
+
+      {directionsResponse && (
+        <DirectionsRenderer directions={directionsResponse} />
       )}
     </GoogleMap>
   ) : (

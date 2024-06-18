@@ -9,17 +9,7 @@ import { useUserAddress } from "@/contexts/user.context";
 import { useRef, useEffect } from "react";
 
 export default function PlacesSearchOrigin() {
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  const originRef = useRef();
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  const destiantionRef = useRef();
-  const { setLocation, location } = useUserAddress();
-
-  useEffect(() => {
-    if (location) {
-      console.log("Origin Ref",originRef.current.value);
-    }
-  }, [location]);
+  const { setLocation, originRef } = useUserAddress();
 
   const {
     ready,
@@ -90,9 +80,9 @@ export default function PlacesSearchOrigin() {
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder=" Location"
+        placeholder=" Origin"
         className="bg-cream-200 text-cream-700 text-center placeholder:text-cream-700 
-        py-2  rounded-xl "
+        py-2  rounded h-12 "
         ref={originRef}
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}

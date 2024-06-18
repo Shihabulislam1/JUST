@@ -1,4 +1,10 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useRef,
+} from "react";
 import { ethers } from "ethers";
 import abi from "../constants/abi.json";
 import { constants } from "@/constants/constants";
@@ -17,8 +23,14 @@ const UserAddressContext = createContext<{
   setDestination: React.Dispatch<
     React.SetStateAction<{ lat: number; lng: number }>
   >;
-  distance: number;
-  setDistance: React.Dispatch<React.SetStateAction<number>>;
+  distance: string;
+  setDistance: React.Dispatch<React.SetStateAction<string>>;
+  duration: string;
+  setDuration: React.Dispatch<React.SetStateAction<string>>;
+  originRef: React.MutableRefObject<HTMLInputElement | null>;
+  destiantionRef: React.MutableRefObject<HTMLInputElement | null>;
+  directionsResponse: any;
+  setDirectionsResponse: React.Dispatch<React.SetStateAction<any>>;
 }>({
   userAddress: "",
   setUserAddress: () => {},
@@ -28,8 +40,14 @@ const UserAddressContext = createContext<{
   setLocation: () => {},
   destination: { lat: 0, lng: 0 },
   setDestination: () => {},
-  distance: 0,
+  distance: "",
   setDistance: () => {},
+  duration: "",
+  setDuration: () => {},
+  originRef: { current: null },
+  destiantionRef: { current: null },
+  directionsResponse: null,
+  setDirectionsResponse: () => {},
 });
 
 // 2. Define a provider component
@@ -47,7 +65,11 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
     lat: 0,
     lng: 0,
   });
-  const [distance, setDistance] = useState(0);
+  const [directionsResponse, setDirectionsResponse] = useState(null);
+  const [distance, setDistance] = useState("");
+  const [duration, setDuration] = useState("");
+  const originRef = useRef<HTMLInputElement | null>(null);
+  const destiantionRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const provider = new ethers.BrowserProvider((window as any).ethereum);
@@ -89,6 +111,12 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
         setDestination,
         distance,
         setDistance,
+        duration,
+        setDuration,
+        originRef,
+        destiantionRef,
+        directionsResponse,
+        setDirectionsResponse,
       }}
     >
       {children}
