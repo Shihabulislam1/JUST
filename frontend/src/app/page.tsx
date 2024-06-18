@@ -28,7 +28,7 @@ export default function Home() {
           <UserRider
             role="Rider"
             style="bg-blue-950 text-cream-400"
-            link="/user"
+            link="/user/maps"
           />
           <UserRider
             role="Driver"

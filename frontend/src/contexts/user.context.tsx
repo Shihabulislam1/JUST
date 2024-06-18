@@ -9,11 +9,27 @@ const UserAddressContext = createContext<{
   setUserAddress: React.Dispatch<React.SetStateAction<string>>;
   provider1: any;
   contract1: any;
+  location: { lat: number; lng: number };
+  setLocation: React.Dispatch<
+    React.SetStateAction<{ lat: number; lng: number }>
+  >;
+  destination: { lat: number; lng: number };
+  setDestination: React.Dispatch<
+    React.SetStateAction<{ lat: number; lng: number }>
+  >;
+  distance: number;
+  setDistance: React.Dispatch<React.SetStateAction<number>>;
 }>({
   userAddress: "",
   setUserAddress: () => {},
   provider1: null,
   contract1: null,
+  location: { lat: 22.356184, lng: 91.819006 },
+  setLocation: () => {},
+  destination: { lat: 0, lng: 0 },
+  setDestination: () => {},
+  distance: 0,
+  setDistance: () => {},
 });
 
 // 2. Define a provider component
@@ -23,6 +39,15 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userAddress, setUserAddress] = useState<string>("");
   const [provider1, setProvider] = useState<any>();
   const [contract1, setContract] = useState<any>();
+  const [location, setLocation] = useState({
+    lat: 22.356184,
+    lng: 91.819006,
+  });
+  const [destination, setDestination] = useState({
+    lat: 0,
+    lng: 0,
+  });
+  const [distance, setDistance] = useState(0);
 
   useEffect(() => {
     const provider = new ethers.BrowserProvider((window as any).ethereum);
@@ -45,20 +70,26 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
 
         setContract(contract);
         setProvider(provider);
-
-        
-
       }
     };
 
     provider && web3();
   }, []);
 
-        
-
   return (
     <UserAddressContext.Provider
-      value={{ userAddress, setUserAddress, provider1, contract1 }}
+      value={{
+        userAddress,
+        setUserAddress,
+        provider1,
+        contract1,
+        location,
+        setLocation,
+        destination,
+        setDestination,
+        distance,
+        setDistance,
+      }}
     >
       {children}
     </UserAddressContext.Provider>

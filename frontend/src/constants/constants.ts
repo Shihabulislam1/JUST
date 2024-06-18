@@ -3,8 +3,8 @@ import { parseEther,parseUnits } from 'ethers';
 export const constants = {
   smartContractAddress: "0xd9145CCE52D386f254917e481eB44e9943F39138",
 
-  GoogleMapsApiKey: "AIzaSyBimhz7M2U-34fZKvZG_ZVs42LED1LeF7o",
-  MapID:"ecc87c12b2d4e99f",
+  GoogleMapsApiKey: "AIzaSyCB6g7IAeMZIjMtX3BZjgMhCDr3AAfhlhI",
+  MapID:"79271e03ebac57b7",
 };
 
 export const takaToWei = (amountInTaka: number): bigint => {
