@@ -1,16 +1,17 @@
 import { useUserAddress } from "@/contexts/user.context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { takaToWei } from "@/constants/constants";
+import { calculateFare } from "@/lib/function";
+import Loader from "../Loader/Loader";
 
 const BookForm = () => {
-  const { contract1, userAddress } = useUserAddress();
+  const { contract1, userAddress, originRef, destiantionRef, distance,locationString,destinationString } =
+    useUserAddress();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [fare, setFare] = useState<bigint>();
-  const [location, setLocation] = useState<string>("");
-  const [destination, setDestination] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,9 +24,9 @@ const BookForm = () => {
         name,
         email,
         phone,
-        fare,
-        location,
-        destination,
+        takaToWei(calculateFare(distance)),
+        locationString,
+        destinationString,
         new Date().toLocaleDateString(),
         new Date().toLocaleTimeString()
       );
@@ -90,48 +91,36 @@ const BookForm = () => {
           <label className="label" htmlFor="fare">
             Fare
           </label>
-          <input
+          <p className="inField py-3">{calculateFare(distance)} Tk</p>
+          {/* <input
             type="number"
             className="inField"
             id="fare"
             onChange={(e) => {
               setFare(takaToWei(Number(e.target.value)));
             }}
+            value={calculateFare(distance)}
             name="fare"
-          />
+            disabled
+          /> */}
         </div>
         <div className="form-group">
           <label className="label" htmlFor="location">
             Location
           </label>
-          <input
-            type="text"
-            className="inField"
-            id="location"
-            name="location"
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
-          />
+          <p className="inField py-3">{locationString} </p>
         </div>
         <div className="form-group">
           <label className="label" htmlFor="destination">
             Destination
           </label>
-          <input
-            type="text"
-            className="inField"
-            id="destination"
-            name="destination"
-            onChange={(e) => {
-              setDestination(e.target.value);
-            }}
-          />
+          
+          <p className="inField py-3">{destinationString} </p>
         </div>
       </div>
 
       <button type="submit" className="button">
-        {loading ? "Loading..." : "Book"}
+        {loading ? <Loader /> : "Book"}
       </button>
     </form>
   );

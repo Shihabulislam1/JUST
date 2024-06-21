@@ -4,14 +4,16 @@ import { Button } from "../ui/button";
 import PlacesSearchOrigin from "./PlaceSearchOrigin";
 import PlacesSearchDestination from "./PlaceSearchDestination";
 import { useUserAddress } from "@/contexts/user.context";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 
 const Mapform = () => {
+  const router = useRouter();
+  const { toast } = useToast();
   const {
     duration,
     distance,
-    directionsResponse,
     setDirectionsResponse,
-    setDestination,
     setDuration,
     setDistance,
     originRef,
@@ -35,6 +37,7 @@ const Mapform = () => {
     });
     setDirectionsResponse(results);
     console.log(results);
+    // eslint-disable-next-line no-undef
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
   }
@@ -46,6 +49,19 @@ const Mapform = () => {
     setDuration("");
     originRef.current.value = "";
     destiantionRef.current.value = "";
+  }
+
+  function handleNextStep(e: any) {
+    e.preventDefault();
+    if (distance === "" || duration === "") {
+      toast({
+        variant: "destructive",
+        title: "Please calculate the route first.",
+        description: "You need to calculate the route first before proceeding.",
+      });
+      return;
+    }
+    router.push("/user");
   }
 
   return (
@@ -64,14 +80,23 @@ const Mapform = () => {
           </div>
         )}
         <div className="text-bgdark flex gap-2 font-bold">
-          <Button className="bg-cream-400 rounded-xl hover:border hover:border-cream-400 hover:text-cream-400" onClick={calculateRoute}>
+          <Button
+            className="bg-cream-400 rounded-xl hover:border hover:border-cream-400 hover:text-cream-400"
+            onClick={calculateRoute}
+          >
             Calculate Route
           </Button>
-          <Button className="bg-cream-400 rounded-xl " onClick={clearRoute}>
+          <Button
+            className="bg-cream-400 rounded-xl hover:border hover:border-cream-400 hover:text-cream-400 "
+            onClick={clearRoute}
+          >
             Clear Route
           </Button>
         </div>
-        <Button className="bg-cream-900 rounded-xl text-cream-400 ">
+        <Button
+          className="bg-cream-900 rounded-xl text-cream-200 text-md p-6 hover:bg-bgdark hover:text-cream-600 hover:border hover:border-x-2 hover:border-y-2 hover:border-cream-600  transition-all duration-100 ease-in-out"
+          onClick={handleNextStep}
+        >
           Next Step
         </Button>
       </form>

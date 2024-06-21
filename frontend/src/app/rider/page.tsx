@@ -36,7 +36,7 @@ const Rider = () => {
         ) : (
           bookingRequests.map(
             (request) =>
-              request.name !== "" && (
+              request.name !== "" &&(
                 <RideCard
                   key={`${request.time}+${Math.random()}`}
                   request={request}

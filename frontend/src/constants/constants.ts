@@ -1,36 +1,36 @@
-import { parseEther,parseUnits } from 'ethers';
+import { parseEther, formatEther} from "ethers";
 
 export const constants = {
-  smartContractAddress: "0xd9145CCE52D386f254917e481eB44e9943F39138",
+  smartContractAddress: "0xbC9293dF4750c72D7B2587dEFfB6D9cA92441B28",
 
   GoogleMapsApiKey: "AIzaSyCB6g7IAeMZIjMtX3BZjgMhCDr3AAfhlhI",
-  MapID:"79271e03ebac57b7",
+  MapID: "79271e03ebac57b7",
 };
+type BigNumberish = string | number | bigint;
 
-export const takaToWei = (amountInTaka: number): bigint => {
+export const takaToWei = (amountInTaka: number): BigNumberish => {
   // Step 1: Convert Taka to US Dollars
-  const amountInUSD = BigInt(amountInTaka) * BigInt(117);
-
+  const amountInUSD = amountInTaka / 117;
   // Step 2: Convert US Dollars to Ether
-  const amountInEther = amountInUSD / BigInt(28955);
-
+  const amountInEther = amountInUSD / 28955;
   // Step 3: Convert Ether to Wei
-  const amountInWei = parseEther(amountInEther.toString());
-
+  const amountInWei = parseEther(amountInEther.toFixed(18));
   return amountInWei;
 };
 
+takaToWei(2500);
 
-
-export const weiToTaka = (amountInWei: bigint): number => {
+export const weiToTaka = (amountInWei: BigNumberish): number => {
   // Step 1: Convert Wei to Ether
-  const amountInEther = Number(amountInWei) / 1e18;
+  const amountInEther = parseFloat(
+    parseFloat(formatEther(amountInWei)).toFixed(18)
+  );
 
   // Step 2: Convert Ether to US Dollars
-  const amountInUSD = amountInEther * 2895.5;
+  const amountInUSD = parseFloat((amountInEther * 28955).toFixed(2));
 
   // Step 3: Convert US Dollars to Taka
-  const amountInTaka = amountInUSD * 117;
+  const amountInTaka = parseFloat((amountInUSD * 117).toFixed(2));
 
   return amountInTaka;
 };

@@ -8,7 +8,12 @@ import useOnclickOutside from "react-cool-onclickoutside";
 import { useUserAddress } from "@/contexts/user.context";
 
 export default function PlacesSearchDestination() {
-  const { setDestination, destiantionRef } = useUserAddress();
+  const {
+    setDestination,
+    destiantionRef,
+    destinationString,
+    setDestinationString,
+  } = useUserAddress();
   const {
     ready,
     value,
@@ -30,9 +35,10 @@ export default function PlacesSearchDestination() {
     clearSuggestions();
   });
 
-  const handleInput = (e) => {
+  const handleInput = (e: any) => {
     // Update the keyword of the input element
     setValue(e.target.value);
+    // setDestinationString(e.target.value);
   };
 
   const handleSelect =

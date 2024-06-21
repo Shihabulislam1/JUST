@@ -31,6 +31,10 @@ const UserAddressContext = createContext<{
   destiantionRef: React.MutableRefObject<HTMLInputElement | null>;
   directionsResponse: any;
   setDirectionsResponse: React.Dispatch<React.SetStateAction<any>>;
+  locationString: string;
+  setLocationString: React.Dispatch<React.SetStateAction<string>>;
+  destinationString: string;
+  setDestinationString: React.Dispatch<React.SetStateAction<string>>;
 }>({
   userAddress: "",
   setUserAddress: () => {},
@@ -48,6 +52,10 @@ const UserAddressContext = createContext<{
   destiantionRef: { current: null },
   directionsResponse: null,
   setDirectionsResponse: () => {},
+  locationString: "",
+  setLocationString: () => {},
+  destinationString: "",
+  setDestinationString: () => {},
 });
 
 // 2. Define a provider component
@@ -68,8 +76,25 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
+  const [locationString, setLocationString] = useState("");
+  const [destinationString, setDestinationString] = useState("");
+
   const originRef = useRef<HTMLInputElement | null>(null);
   const destiantionRef = useRef<HTMLInputElement | null>(null);
+
+  // Update locationString whenever originRef.current.value changes
+  useEffect(() => {
+    if (originRef.current) {
+      setLocationString(originRef.current.value);
+    }
+  }, [originRef.current?.value]);
+
+  // Update destinationString whenever destiantionRef.current.value changes
+  useEffect(() => {
+    if (destiantionRef.current) {
+      setDestinationString(destiantionRef.current.value);
+    }
+  }, [destiantionRef.current?.value]);
 
   useEffect(() => {
     const provider = new ethers.BrowserProvider((window as any).ethereum);
@@ -117,6 +142,10 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
         destiantionRef,
         directionsResponse,
         setDirectionsResponse,
+        locationString,
+        setLocationString,
+        destinationString,
+        setDestinationString,
       }}
     >
       {children}

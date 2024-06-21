@@ -9,7 +9,7 @@ import { useUserAddress } from "@/contexts/user.context";
 import { useRef, useEffect } from "react";
 
 export default function PlacesSearchOrigin() {
-  const { setLocation, originRef } = useUserAddress();
+  const { setLocation, originRef,setLocationString } = useUserAddress();
 
   const {
     ready,
@@ -32,9 +32,10 @@ export default function PlacesSearchOrigin() {
     clearSuggestions();
   });
 
-  const handleInput = (e) => {
+  const handleInput = (e:any) => {
     // Update the keyword of the input element
     setValue(e.target.value);
+    // setLocationString(e.target.value);
   };
 
   const handleSelect =

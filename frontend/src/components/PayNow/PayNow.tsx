@@ -22,16 +22,20 @@ const PayNow = ({
     try {
       setPaying(true);
       await provider1.send("eth_requestAccounts", []);
-      await contract1.rideFare();
-      const tx=await contract1.sendEthRider(booking2.RidermetaID,{value: booking2.fare});
-      const TxResponse = await provider1.sendTransaction(tx);
-      await TxResponse.wait();
+      // await contract1.rideFare();
+      // console.log("Booking2",booking2.RidermetaID,booking2.fare)
+      const tx=await contract1.rideFare(booking2.RidermetaID,{value: booking2.fare});
+      // const TxResponse = await provider1.sendTransaction(tx);
+      await tx.wait();
+      await contract1.deleteBooking(booking2.metamaskID);
+      console.log("Tx",tx)
       setPaying(false);
       await setBooking2(null);
-      await alert("Payment Successful");
-      await (window as any).location.reload();
+      alert("Payment Successful");
+      // await (window as any).location.reload();
     } catch (error) {
       alert(error);
+      console.log("Error",error)
     } finally {
       setPaying(false);
     }
@@ -40,11 +44,11 @@ const PayNow = ({
   const handleCancel = async () => {
     try {
       setCancelling(true);
-      await contract1.deleteBooking();
+      await contract1.deleteBooking(booking2.metamaskID);
       setCancelling(false);
       await setBooking2(null);
       await alert("Ride Cancelled");
-      await (window as any).location.reload();
+      // await (window as any).location.reload();
     } catch (error) {
       alert(error);
     } finally {

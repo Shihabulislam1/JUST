@@ -19,8 +19,10 @@ const Rider = ({
         <LNav
           text1="Availabe Rides"
           text2="Accepted Rides"
+          text3="See Route"
           link1="/rider"
           link2="/rider/accepted-ride"
+          link3="/rider/maps"
         />
         {children}
       </section>

@@ -49,10 +49,6 @@ export default function MainMap() {
     setLocation,
     destination,
     setDestination,
-    duration,
-    setDuration,
-    setDistance,
-    distance,
     directionsResponse,
   } = useUserAddress();
 
