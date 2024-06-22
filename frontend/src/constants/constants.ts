@@ -1,7 +1,7 @@
 import { parseEther, formatEther} from "ethers";
 
 export const constants = {
-  smartContractAddress: "0xbC9293dF4750c72D7B2587dEFfB6D9cA92441B28",
+  smartContractAddress: "0x61359Bb64A8Fbd07db286076612828d1858bDC7b",
 
   GoogleMapsApiKey: "AIzaSyCB6g7IAeMZIjMtX3BZjgMhCDr3AAfhlhI",
   MapID: "79271e03ebac57b7",

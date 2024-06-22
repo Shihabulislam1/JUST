@@ -137,24 +137,24 @@ contract RideSharing {
 //    }
 event FarePaid(address indexed user, address indexed rider, uint fareAmount);
 
-function rideFare(address riderAddress) external payable {
-    uint fareAmount = books[msg.sender].fare;
-    require(msg.value >= fareAmount, "Not enough to pay the fare");
+function rideFare(address payable riderAddress) external payable {
+        uint fareAmount = books[msg.sender].fare;
+        require(msg.value >= fareAmount, "Not enough to pay the fare");
 
-    // Mark the booking as paid
-    books[msg.sender].paid = true;
+        // If the msg.value is greater than fareAmount, refund the excess amount back to the user
+        if (msg.value > fareAmount) {
+            payable(msg.sender).transfer(msg.value - fareAmount);
+        }
 
-    // Transfer the fare amount to the rider
-    payable(riderAddress).transfer(msg.value);
-    
-    // Emit an event for logging purposes
-    emit FarePaid(msg.sender, riderAddress, fareAmount);
+        // Transfer the fare amount to the rider
+        riderAddress.transfer(fareAmount);
 
-    // If the msg.value is greater than fareAmount, refund the excess amount back to the user
-    if (msg.value > fareAmount) {
-        payable(msg.sender).transfer(msg.value - fareAmount);
+        // Mark the booking as paid
+        books[msg.sender].paid = true;
+
+        // Emit an event for logging purposes
+        emit FarePaid(msg.sender, riderAddress, fareAmount);
     }
-}
 
 
 
