@@ -31,10 +31,10 @@ contract RideSharing {
     bool paid;
    }
 
-   address public owner;
-   constructor(){
-    owner= msg.sender;
-   }
+//    address public owner;
+//    constructor(){
+//     owner= msg.sender;
+//    }
    
    mapping(address => User) public users;
    address[] public userAddresses;
@@ -42,10 +42,10 @@ contract RideSharing {
     mapping(address => Booked) public books;
    address[] public bookingAddresses;
 
-   /*modifier onlyOwner() {
-       require(msg.sender == owner, "Not the owner");
-       _;
-   }*/
+//    modifier onlyOwner() {
+//        require(msg.sender == owner, "Not the owner");
+//        _;
+//    }
 
    function addUser(string memory _metamaskID, string memory _name, string memory _email, string memory _number, uint _fare, string memory _location, string memory _destination, string memory _date, string memory _time) public  {
         User memory newUser = User(_metamaskID, _name, _email, _number, _fare, _location, _destination, _date, _time);
@@ -115,9 +115,6 @@ contract RideSharing {
         }
    }
 
-//    function rideCard() external {
-
-//    }
       function requestPayment(address _riderAddress) public {
     require(msg.sender != _riderAddress, "You can't request to yourself");
         require(books[_riderAddress].request == false, "You have already requested");
@@ -128,50 +125,20 @@ contract RideSharing {
     return books[_riderAddress].paid;
         }
 
-//    function rideFare() external payable{
-//     uint fareAmount = books[msg.sender].fare;
-//     require(msg.value >= fareAmount, "Not enough to pay the fare");
-//     books[msg.sender].paid = true;
-//     payable(owner).transfer(fareAmount);
-
-//    }
-// event FarePaid(address indexed user, address indexed rider, uint fareAmount);
-
-// function rideFare(address payable riderAddress) external payable {
-//         uint fareAmount = books[msg.sender].fare;
-//         require(msg.value >= fareAmount, "Not enough to pay the fare");
-
-//         // If the msg.value is greater than fareAmount, refund the excess amount back to the user
-//         if (msg.value > fareAmount) {
-//             payable(msg.sender).transfer(msg.value - fareAmount);
-//         }
-
-//         // Transfer the fare amount to the rider
-//         riderAddress.transfer(fareAmount);
-
-//         // Mark the booking as paid
-//         books[msg.sender].paid = true;
-
-//         // Emit an event for logging purposes
-//         emit FarePaid(msg.sender, riderAddress, fareAmount);
-//     }
-
+    receive() external payable {}
     function payContract() external payable {
         require(msg.value > 0, "Must send some ether");
     }
-    function transferToRider(address payable riderAddress, uint amount) external {
+    
+    function transferToRider(address _riderAddress,uint256 amount) public payable {
         require(amount > 0, "Amount must be greater than zero");
         require(address(this).balance >= amount, "Insufficient contract balance");
-        
-        riderAddress.transfer(amount);
+        payable(_riderAddress).transfer(amount);
     }
 
-
-
-
-   function contractBalance() external view returns(uint){
-   return address(this).balance;
-   }
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
 
    function sendEthRider(address _rider) public payable{
     require(msg.sender != _rider, "You can't send Ether to yourself");
@@ -180,4 +147,3 @@ contract RideSharing {
 
 }
 
-// Contract Address: 0x5F361cfF91e092067aab82E5231E877553D1a39d
