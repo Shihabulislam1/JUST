@@ -15,6 +15,8 @@ const UserAddressContext = createContext<{
   setUserAddress: React.Dispatch<React.SetStateAction<string>>;
   provider1: any;
   contract1: any;
+  signer: any;
+  setSigner: React.Dispatch<React.SetStateAction<any>>;
   location: { lat: number; lng: number };
   setLocation: React.Dispatch<
     React.SetStateAction<{ lat: number; lng: number }>
@@ -56,6 +58,8 @@ const UserAddressContext = createContext<{
   setLocationString: () => {},
   destinationString: "",
   setDestinationString: () => {},
+  signer: null,
+  setSigner: () => {},
 });
 
 // 2. Define a provider component
@@ -65,6 +69,7 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userAddress, setUserAddress] = useState<string>("");
   const [provider1, setProvider] = useState<any>();
   const [contract1, setContract] = useState<any>();
+  const [signer, setSigner] = useState<any>();
   const [location, setLocation] = useState({
     lat: 22.356184,
     lng: 91.819006,
@@ -105,6 +110,11 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
         });
 
         const signer = await provider.getSigner();
+        // const signer1 = new ethers.Wallet(
+        //   constants.SIGNER_PRIVATE_KEY,
+        //   provider
+        // );
+        setSigner(signer);
         const address = await signer.getAddress();
 
         setUserAddress(address);
@@ -146,6 +156,8 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
         setLocationString,
         destinationString,
         setDestinationString,
+        signer,
+        setSigner,
       }}
     >
       {children}

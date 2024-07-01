@@ -1,10 +1,14 @@
-import { parseEther, formatEther} from "ethers";
+import { parseEther, formatEther } from "ethers";
 
 export const constants = {
-  smartContractAddress: "0x61359Bb64A8Fbd07db286076612828d1858bDC7b",
-
+  smartContractAddress: "0x0A0584cb04f1Ea291b67459Cf6D01c15806f6D3c",
   GoogleMapsApiKey: "AIzaSyCB6g7IAeMZIjMtX3BZjgMhCDr3AAfhlhI",
   MapID: "79271e03ebac57b7",
+  ETHEREUM_NETWORK: "sepolia",
+  INFURA_API_KEY: "GCPmtsi8w3qRktbITbQQHDCJbZ9xi746XXhTfAKxZJPrAwbiE3A1eQ",
+  INFURA_PROJECT_ID: " 9b3bfed8dcc341eb858ee1dbf0166c7f",
+  SIGNER_PRIVATE_KEY:
+    "6fae49d3131efce9c094173d7aa6ca88ff73374346f86f1ad0a6c558f2e19992",
 };
 type BigNumberish = string | number | bigint;
 
@@ -33,4 +37,14 @@ export const weiToTaka = (amountInWei: BigNumberish): number => {
   const amountInTaka = parseFloat((amountInUSD * 117).toFixed(2));
 
   return amountInTaka;
+};
+
+export const increaseBy30Percent = (value: bigint): bigint => {
+  // Calculate 30% of the value
+  const thirtyPercent: bigint = (value * BigInt(30)) / BigInt(100);
+
+  // Add 30% to the original value
+  const increasedValue: bigint = value + thirtyPercent;
+
+  return increasedValue;
 };

@@ -135,26 +135,37 @@ contract RideSharing {
 //     payable(owner).transfer(fareAmount);
 
 //    }
-event FarePaid(address indexed user, address indexed rider, uint fareAmount);
+// event FarePaid(address indexed user, address indexed rider, uint fareAmount);
 
-function rideFare(address payable riderAddress) external payable {
-        uint fareAmount = books[msg.sender].fare;
-        require(msg.value >= fareAmount, "Not enough to pay the fare");
+// function rideFare(address payable riderAddress) external payable {
+//         uint fareAmount = books[msg.sender].fare;
+//         require(msg.value >= fareAmount, "Not enough to pay the fare");
 
-        // If the msg.value is greater than fareAmount, refund the excess amount back to the user
-        if (msg.value > fareAmount) {
-            payable(msg.sender).transfer(msg.value - fareAmount);
-        }
+//         // If the msg.value is greater than fareAmount, refund the excess amount back to the user
+//         if (msg.value > fareAmount) {
+//             payable(msg.sender).transfer(msg.value - fareAmount);
+//         }
 
-        // Transfer the fare amount to the rider
-        riderAddress.transfer(fareAmount);
+//         // Transfer the fare amount to the rider
+//         riderAddress.transfer(fareAmount);
 
-        // Mark the booking as paid
-        books[msg.sender].paid = true;
+//         // Mark the booking as paid
+//         books[msg.sender].paid = true;
 
-        // Emit an event for logging purposes
-        emit FarePaid(msg.sender, riderAddress, fareAmount);
+//         // Emit an event for logging purposes
+//         emit FarePaid(msg.sender, riderAddress, fareAmount);
+//     }
+
+    function payContract() external payable {
+        require(msg.value > 0, "Must send some ether");
     }
+    function transferToRider(address payable riderAddress, uint amount) external {
+        require(amount > 0, "Amount must be greater than zero");
+        require(address(this).balance >= amount, "Insufficient contract balance");
+        
+        riderAddress.transfer(amount);
+    }
+
 
 
 
