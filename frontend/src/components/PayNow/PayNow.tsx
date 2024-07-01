@@ -31,6 +31,10 @@ const PayNow = ({
     try {
       setPaying(true);
       await provider1.send("eth_requestAccounts", []);
+      if (!(window as any).ethereum)
+        throw new Error("No crypto wallet found. Please install it.");
+      await (window as any).ethereum.send("eth_requestAccounts");
+
       // await contract1.rideFare();
       // console.log("Booking2",booking2.RidermetaID,booking2.fare)
       // const tx = await contract1.payContract({
@@ -54,7 +58,7 @@ const PayNow = ({
       // Waiting for the transaction to be mined
       const receipt = await tx.wait();
       // The transaction is now on chain!
-      console.log(`Mined in block ${receipt.blockNumber}`);
+      console.log(receipt);
 
       await contract1.deleteBooking(booking2.RidermetaID);
 
