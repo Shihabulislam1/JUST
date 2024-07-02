@@ -1,58 +1,5 @@
 {
-  "abi": [
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_metamaskID",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_name",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_email",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_number",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_fare",
-          "type": "uint256"
-        },
-        {
-          "internalType": "string",
-          "name": "_location",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_destination",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_date",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_time",
-          "type": "string"
-        }
-      ],
-      "name": "addUser",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
+  "abi":[
     {
       "inputs": [
         {
@@ -114,73 +61,55 @@
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "_bookingAddress",
-          "type": "address"
-        }
-      ],
-      "name": "deleteBooking",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
+          "internalType": "string",
+          "name": "_metamaskID",
+          "type": "string"
+        },
         {
-          "internalType": "address",
-          "name": "_userAddress",
-          "type": "address"
-        }
-      ],
-      "name": "deleteUser",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
         {
-          "internalType": "address",
-          "name": "_riderAddress",
-          "type": "address"
-        }
-      ],
-      "name": "requestPayment",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "rideCard",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "rideFare",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "inputs": [
+          "internalType": "string",
+          "name": "_email",
+          "type": "string"
+        },
         {
-          "internalType": "address",
-          "name": "_rider",
-          "type": "address"
+          "internalType": "string",
+          "name": "_number",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_location",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_destination",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_date",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_time",
+          "type": "string"
         }
       ],
-      "name": "sendEthRider",
+      "name": "addUser",
       "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "function"
     },
     {
       "inputs": [
@@ -266,13 +195,86 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_bookingAddress",
+          "type": "address"
+        }
+      ],
+      "name": "deleteBooking",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_userAddress",
+          "type": "address"
+        }
+      ],
+      "name": "deleteUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
-      "name": "contractBalance",
+      "name": "getAllUsers",
       "outputs": [
         {
-          "internalType": "uint256",
+          "components": [
+            {
+              "internalType": "string",
+              "name": "metamaskID",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "number",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fare",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "location",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "destination",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "date",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "time",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct RideSharing.User[]",
           "name": "",
-          "type": "uint256"
+          "type": "tuple[]"
         }
       ],
       "stateMutability": "view",
@@ -345,59 +347,12 @@
     },
     {
       "inputs": [],
-      "name": "getAllUsers",
+      "name": "getBalance",
       "outputs": [
         {
-          "components": [
-            {
-              "internalType": "string",
-              "name": "metamaskID",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "email",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "number",
-              "type": "string"
-            },
-            {
-              "internalType": "uint256",
-              "name": "fare",
-              "type": "uint256"
-            },
-            {
-              "internalType": "string",
-              "name": "location",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "destination",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "date",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "time",
-              "type": "string"
-            }
-          ],
-          "internalType": "struct RideSharing.User[]",
+          "internalType": "uint256",
           "name": "",
-          "type": "tuple[]"
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
@@ -565,16 +520,29 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
+      "inputs": [
         {
           "internalType": "address",
-          "name": "",
+          "name": "_riderAddress",
           "type": "address"
         }
       ],
-      "stateMutability": "view",
+      "name": "requestPayment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_rider",
+          "type": "address"
+        }
+      ],
+      "name": "sendEthRider",
+      "outputs": [],
+      "stateMutability": "payable",
       "type": "function"
     },
     {

@@ -13,13 +13,18 @@ const User = ({
   return (
     <UserAddressProvider>
       <section className="bg-gray-950 h-screen">
-        <UNav role="Rider" />
-        <LNav
-          text1="Book A Ride"
-          text2="Pay For A Ride"
-          link1="/user"
-          link2="/user/pay"
-        />
+        <div className="h-[130px]">
+          <UNav role="Rider" />
+          <LNav
+            text1="Book A Ride"
+            text2="Pay For A Ride"
+            text3="Choose Destination"
+            link1="/user"
+            link2="/user/pay"
+            link3="/user/maps"
+          />
+        </div>
+
         {children}
       </section>
     </UserAddressProvider>

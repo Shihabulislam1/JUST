@@ -1,12 +1,5 @@
 import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import UserRider from "@/components/UserRider/UserRider";
 6;
 
@@ -28,7 +21,7 @@ export default function Home() {
           <UserRider
             role="Rider"
             style="bg-blue-950 text-cream-400"
-            link="/user"
+            link="/user/maps"
           />
           <UserRider
             role="Driver"

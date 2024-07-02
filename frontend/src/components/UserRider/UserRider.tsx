@@ -4,7 +4,7 @@ import Link from "next/link";
 const UserRider = ({
   role,
   style,
-  link,
+  link="/rider",
 }: {
   role: string;
   style: string;
