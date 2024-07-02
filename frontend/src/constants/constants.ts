@@ -4,11 +4,12 @@ export const constants = {
   smartContractAddress: "0x0A0584cb04f1Ea291b67459Cf6D01c15806f6D3c",
   GoogleMapsApiKey: "AIzaSyCB6g7IAeMZIjMtX3BZjgMhCDr3AAfhlhI",
   MapID: "79271e03ebac57b7",
-  ETHEREUM_NETWORK: "sepolia",
-  INFURA_API_KEY: "GCPmtsi8w3qRktbITbQQHDCJbZ9xi746XXhTfAKxZJPrAwbiE3A1eQ",
-  INFURA_PROJECT_ID: " 9b3bfed8dcc341eb858ee1dbf0166c7f",
-  SIGNER_PRIVATE_KEY:
-    "6fae49d3131efce9c094173d7aa6ca88ff73374346f86f1ad0a6c558f2e19992",
+
+  // ETHEREUM_NETWORK: "sepolia",
+  // INFURA_API_KEY: "GCPmtsi8w3qRktbITbQQHDCJbZ9xi746XXhTfAKxZJPrAwbiE3A1eQ",
+  // INFURA_PROJECT_ID: " 9b3bfed8dcc341eb858ee1dbf0166c7f",
+  // SIGNER_PRIVATE_KEY:
+  //   "6fae49d3131efce9c094173d7aa6ca88ff73374346f86f1ad0a6c558f2e19992",
 };
 type BigNumberish = string | number | bigint;
 
@@ -22,7 +23,7 @@ export const takaToWei = (amountInTaka: number): BigNumberish => {
   return amountInWei;
 };
 
-takaToWei(2500);
+// takaToWei(2500);
 
 export const weiToTaka = (amountInWei: BigNumberish): number => {
   // Step 1: Convert Wei to Ether

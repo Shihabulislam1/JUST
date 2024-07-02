@@ -35,21 +35,6 @@ const PayNow = ({
         throw new Error("No crypto wallet found. Please install it.");
       await (window as any).ethereum.send("eth_requestAccounts");
 
-      // await contract1.rideFare();
-      // console.log("Booking2",booking2.RidermetaID,booking2.fare)
-      // const tx = await contract1.payContract({
-      //   value: booking2.fare + increaseBy30Percent(booking2.fare),
-      // });
-      // // const TxResponse = await provider1.sendTransaction(tx);
-      // await tx.wait();
-      // console.log("Tx", tx);
-      // const tx2 = await contract1.sendEthRider(
-      //   booking2.RidermetaID,
-      //   {value:booking2.fare}
-      // );
-      // await tx2.wait();
-
-      // console.log("Tx2", tx2);
       const tx = await signer.sendTransaction({
         to: booking2.RidermetaID,
         value: booking2.fare,

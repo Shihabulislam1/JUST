@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import RideCard from "../../components/RideCard/RideCard";
 import { useRiderAddress } from "../../contexts/rider.context";
+import Loader3 from "@/components/Loader/Loader3";
 
 const Rider = () => {
   const { contract2 } = useRiderAddress();
@@ -26,24 +27,30 @@ const Rider = () => {
   }, [bookingRequests]);
 
   return (
-    <div>
+    <div className="flex flex-col h-[100%] gap-24">
       <h2 className="text-blue-950 font-semibold text-center text-[32px]">
         Booking Requests
       </h2>
-      <div className="px-12 py-4 grid grid-cols-2 gap-x-2 gap-y-2 ">
+      <div className="flex justify-center items-center h-full">
         {bookingRequests.length === 0 ? (
-          <p>Loading</p>
+          <div>
+            <Loader3 />
+          </div>
+        ) : bookingRequests.some((request) => request.name !== "") ? (
+          <div className="px-12 py-4 grid grid-cols-2 gap-x-2 gap-y-2 ">
+            {bookingRequests.map(
+              (request) =>
+                request.name !== "" && (
+                  <RideCard
+                    key={`${request.time}+${Math.random()}`}
+                    request={request}
+                    contract={contract2}
+                  />
+                )
+            )}
+          </div>
         ) : (
-          bookingRequests.map(
-            (request) =>
-              request.name !== "" &&(
-                <RideCard
-                  key={`${request.time}+${Math.random()}`}
-                  request={request}
-                  contract={contract2}
-                />
-              )
-          )
+          <div className="font-bold text-xl">No Available Requests Found</div>
         )}
       </div>
     </div>

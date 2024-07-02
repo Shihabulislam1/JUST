@@ -4,6 +4,7 @@ import React from "react";
 import { takaToWei } from "@/constants/constants";
 import { calculateFare } from "@/lib/function";
 import Loader from "../Loader/Loader";
+import Loader2 from "../Loader/Loader2";
 
 const BookForm = () => {
   const { contract1, userAddress, originRef, destiantionRef, distance,locationString,destinationString } =
@@ -120,8 +121,9 @@ const BookForm = () => {
       </div>
 
       <button type="submit" className="button">
-        {loading ? <Loader /> : "Book"}
+        {loading ? <Loader2 /> : "Book"}
       </button>
+      {/* <Loader2/> */}
     </form>
   );
 };
