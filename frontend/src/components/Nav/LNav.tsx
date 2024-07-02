@@ -19,11 +19,11 @@ const LNav = ({
   return (
     <nav className="w-full py-2 flex justify-center items-center bg-cream-400">
       <ul className="flex gap-24 justify-center items-center">
-        <li>
+       { text3!=="See Route"&&<li>
           <Link href={link3} className="text-blue-950 font-bold text-2xl ">
             {text3}
           </Link>
-        </li>
+        </li>}
         <li>
           <Link href={link1} className="text-blue-950 font-bold text-2xl ">
             {text1}

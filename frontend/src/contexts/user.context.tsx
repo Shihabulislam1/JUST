@@ -103,6 +103,7 @@ export const UserAddressProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const provider = new ethers.BrowserProvider((window as any).ethereum);
+    
     const web3 = async () => {
       if (provider) {
         (window as any).ethereum.on("accountsChanges", () => {
