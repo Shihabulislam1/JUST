@@ -28,21 +28,6 @@ const options = {
   streetViewControl: false,
 };
 
-const locationIcon = {
-  url: "../../../public/MarkerIcon/location_10797996.png",
-  scaledSize: {
-    width: 40,
-    height: 40,
-  },
-};
-const destinationIcon = {
-  url: "../../../public/MarkerIcon/location_12000701.png",
-  scaledSize: {
-    width: 40,
-    height: 40,
-  },
-};
-
 export default function MainMap() {
   const {
     location,
