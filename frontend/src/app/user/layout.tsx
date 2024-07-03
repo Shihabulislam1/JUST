@@ -17,7 +17,7 @@ const User = ({
           <UNav role="Rider" />
           <LNav
             text1="Book A Ride"
-            text2="Pay For A Ride"
+            text2="Pay For The Ride"
             text3="Choose Destination"
             link1="/user"
             link2="/user/pay"
