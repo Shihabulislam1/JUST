@@ -6,15 +6,15 @@ import { useState } from "react";
 import { useUserAddress } from "@/contexts/user.context";
 import { constants, weiToTaka } from "@/constants/constants";
 import { ethers } from "ethers";
-const increaseBy30Percent = (value: bigint): bigint => {
-  // Calculate 30% of the value
-  const thirtyPercent: bigint = (value * BigInt(30)) / BigInt(100);
+// const increaseBy30Percent = (value: bigint): bigint => {
+//   // Calculate 30% of the value
+//   const thirtyPercent: bigint = (value * BigInt(30)) / BigInt(100);
 
-  // Add 30% to the original value
-  const increasedValue: bigint = value + thirtyPercent;
+//   // Add 30% to the original value
+//   const increasedValue: bigint = value + thirtyPercent;
 
-  return increasedValue;
-};
+//   return increasedValue;
+// };
 
 const PayNow = ({
   booking2,
