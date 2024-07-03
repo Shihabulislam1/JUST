@@ -75,7 +75,7 @@ const PayNow = ({
   };
 
   return booking2 === null ? (
-    <div>No Rider accepted request or no request created</div>
+    <div className="font-semibold text-[36px] text-cream-100 h-[450px] flex justify-center items-center ">No Rider accepted request or no request created</div>
   ) : (
     <Card className="border-none bg-cream-100 rounded-xl px-24 py-12">
       <CardHeader className="text-center text-3xl font-semibold text-blue-950">
