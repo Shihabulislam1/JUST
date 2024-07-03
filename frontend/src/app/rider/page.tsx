@@ -28,7 +28,7 @@ const Rider = () => {
 
   return (
     <div className="flex flex-col h-[100%] gap-24">
-      <h2 className="text-blue-950 font-semibold text-center text-[32px]">
+      <h2 className="text-cream-100 py-2 font-semibold text-center text-[36px] w-[100vw] bg-blue-950 ">
         Booking Requests
       </h2>
       <div className="flex justify-center items-center h-full">
@@ -50,7 +50,7 @@ const Rider = () => {
             )}
           </div>
         ) : (
-          <div className="font-bold text-xl">No Available Requests Found</div>
+          <div className="font-semibold text-[32px] h-[400px]  ">No Available Requests Found</div>
         )}
       </div>
     </div>

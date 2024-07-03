@@ -40,7 +40,7 @@ const GetPay = ({ booking, setBooking }: { booking: any; setBooking: any }) => {
   };
 
   return booking === null ? (
-    <p>Nothing to show</p>
+    <div className="flex justify-center items-center h-[450px] text-[32px] font-semibold text-cream-800 ">Nothing to show</div>
   ) : (
     <Card className="border-none bg-cream-100 rounded-xl px-4 py-6">
       <CardHeader className="text-center text-xl font-semibold text-blue-950">
