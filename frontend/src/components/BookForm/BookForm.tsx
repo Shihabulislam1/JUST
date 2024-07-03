@@ -53,6 +53,7 @@ const BookForm = () => {
             className="inField"
             id="name"
             name="name"
+            required
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -67,6 +68,7 @@ const BookForm = () => {
             className="inField"
             id="email"
             name="email"
+            required
             placeholder="example@email.com"
             onChange={(e) => {
               setEmail(e.target.value);
@@ -82,6 +84,7 @@ const BookForm = () => {
             className="inField"
             id="phone"
             name="phone"
+            required
             placeholder="8801xxxxxxxxx"
             onChange={(e) => {
               setPhone(e.target.value);
