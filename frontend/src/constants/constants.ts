@@ -2,8 +2,8 @@ import { parseEther, formatEther } from "ethers";
 
 export const constants = {
   smartContractAddress: "0x0A0584cb04f1Ea291b67459Cf6D01c15806f6D3c",
-  GoogleMapsApiKey: "AIzaSyCB6g7IAeMZIjMtX3BZjgMhCDr3AAfhlhI",
-  MapID: "79271e03ebac57b7",
+  GoogleMapsApiKey: "AIzaSyDm3Ap2iSO4KnM1UcnwVsNZLsuLxZGeM94",
+  MapID: "471d066c5b3b756e",
 
   // ETHEREUM_NETWORK: "sepolia",
   // INFURA_API_KEY: "GCPmtsi8w3qRktbITbQQHDCJbZ9xi746XXhTfAKxZJPrAwbiE3A1eQ",
